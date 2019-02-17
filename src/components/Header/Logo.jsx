@@ -6,7 +6,9 @@ import PropTypes from 'prop-types'
 const Logo = props => {
   const { text, className } = props
   return (
-    <p className={className}>{text}</p>
+    <div className={className}>
+      <p>{text}</p>
+    </div>
   )
 }
 
@@ -15,11 +17,13 @@ Logo.propTypes = {
 }
 
 export default styled(Logo)`
-  position: absolute;
-  left: 60px;
   font-family: Helvetica;
   font-size: 20px;
   color: #000000;
   letter-spacing: 0;
   line-height: 18px;
+  position: absolute;
+  left: 60px;
+  align-self: center;
+  text-transform: capitalize;
 `

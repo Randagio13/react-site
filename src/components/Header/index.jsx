@@ -2,13 +2,20 @@ import styled from 'styled-components'
 import React from 'react'
 import Logo from './Logo'
 import Menu from './Menu'
+import PropTypes from 'prop-types'
 
 const Header = props => (
   <nav className={props.className}>
-    <Logo text='asdrubale' />
-    <Menu elements={['lorem', 'ipsum', 'dolor']} />
+    <Logo text={props.logoText} />
+    <Menu elements={props.menuItems} />
   </nav>
 )
+
+Header.propTypes = {
+  logoText: PropTypes.string.isRequired,
+  menuItems: PropTypes.array.isRequired
+}
+
 export default styled(Header)`
   display: flex;
   flex-flow: row nowrap;
