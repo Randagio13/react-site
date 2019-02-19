@@ -6,12 +6,18 @@ import Content from './Content'
 import Articles from './Content/Articles'
 
 class Page extends Component {
+  componentDidMount () {
+    const { loadingData, data } = this.props
+    if (data.length === 0) {
+      loadingData()
+    }
+  }
   render () {
-    const { className } = this.props
+    const { className, data } = this.props
     return (
       <div className={className}>
         <Content>
-          <Articles />
+          <Articles data={data} />
         </Content>
       </div>
     )
