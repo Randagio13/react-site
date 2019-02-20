@@ -1,27 +1,30 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import Index from './IndexNum'
 import Icon from './Icon'
 import React, { Component } from 'react'
 import Headline from './Headline'
 import SubHeadline from './SubHeadline'
 import Button from './Button'
-import ModalContainer from './Modal'
 import PropTypes from 'prop-types'
 
-const openModal = css`
-  transform: scale(1.5) translate(-10vw, -10vh);
-`
-
-const BoxStyled = styled.div`
+const BoxStyled = styled.div.attrs(({ isModal, isOpen }) => ({
+  style: {
+    transform: !isModal && !isOpen ? '' : 'scale(1.2) translate(-35vw, 5vh)',
+    position: isModal && 'absolute',
+    // top: isModal && '40%',
+    // left: isModal && '57%',
+    zIndex: isModal && 1,
+    width: isModal && 658,
+    height: isModal && 458
+  }
+}))`
+  ${props => {
+    if (!props.isModal && props.isOpen) {
+      return 'transform: translateY(500px); opacity: 0; z-index: 0;'
+    }
+  }}
   width: 310px;
   height: 414px;
-  // width: ${props => props.isModal ? '957px' : '310px'};
-  // height: ${props => props.isModal ? '658px' : '414px'};
-  // ${props => props.isModal ? 'top: -30%' : 'top: 442px'};
-  // ${props => props.isModal ? 'left: -200%' : 'left: 450px'};
-  // ${props => props.isModal ? 'position: absolute' : 'position: fixed'};
-  // ${props => props.isModal ? 'z-index: 1;' : ''}
-  ${props => props.isModal ? `${openModal}` : ''}
   background: #F8E627;
   border-radius: 12px;
   font-family: Helvetica;
@@ -47,19 +50,35 @@ class Box extends Component {
     this.state = {
       isModal: false
     }
+    this.handleClickButton = this.handleClickButton.bind(this)
+  }
+  handleClickButton (e) {
+    const { openModal, isOpen } = this.props
+    const { isModal } = this.state
+    e.preventDefault()
+    openModal(isOpen)
+    this.setState({
+      isModal: !isModal
+    })
   }
   render () {
-    const { indexNum, title, subTitle, icon, btnLabel } = this.props
+    const { indexNum, title, subTitle, icon, btnLabel, showButton, isOpen, onClick } = this.props
     const { isModal } = this.state
     const excerpt = subTitle ? subTitle.substring(0, 70) : ''
+    if (isOpen && isModal) {
+      return (
+        <BoxStyled isModal={isModal} isOpen={isOpen}>
+          {/* {showButton && <Button onClick={this.handleClickButton}>{btnLabel}</Button>} */}
+        </BoxStyled>
+      )
+    }
     return (
-      <BoxStyled isModal={isModal}>
+      <BoxStyled isModal={isModal} isOpen={isOpen}>
         <Index>{indexNum}</Index>
         <Icon typeIcon={icon} />
         <Headline>{title}</Headline>
         <SubHeadline>{excerpt}</SubHeadline>
-        <Button>{btnLabel}</Button>
-        <ModalContainer>ciao</ModalContainer>
+        {showButton && <Button onClick={onClick || this.handleClickButton}>{btnLabel}</Button>}
       </BoxStyled>
     )
   }
@@ -77,12 +96,15 @@ Box.propTypes = {
   /** Icon component. */
   btnLabel: PropTypes.string,
   /** Show button component. */
-  showButton: PropTypes.bool
+  showButton: PropTypes.bool,
+  /** Onclick component. */
+  onClick: PropTypes.func
 }
 
 Box.defaultProps = {
   btnLabel: 'clicca qui',
-  subTitle: ''
+  subTitle: '',
+  showButton: false
 }
 
 export default Box

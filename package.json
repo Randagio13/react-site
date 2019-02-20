@@ -40,6 +40,8 @@
     "@storybook/addon-viewport": "^4.1.12",
     "@storybook/addons": "^4.1.12",
     "@storybook/react": "^4.1.11",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "react-test-renderer": "^16.8.2",
     "react-testing-library": "^5.9.0"
   }

@@ -1,14 +1,20 @@
 import axios from 'axios'
+import { Object } from 'es6-shim'
 const url = 'http://172.104.142.224/articles.php'
 const LOAD_DATA = 'LOAD_DATA'
+const OPEN_MODAL = 'OPEN_MODAL'
+
+export const openModal = (isOpen) => {
+  return {
+    isOpen: !isOpen,
+    type: OPEN_MODAL
+  }
+}
 
 export const loadingData = () => {
-  console.log('loadingData....')
   return dispatch => {
     axios.get(url).then((res) => {
-      console.log(res)
       const data = Reflect.get(res, 'data')
-      console.log(data)
       if (data.length > 0) {
         dispatch({
           data,
@@ -22,15 +28,19 @@ export const loadingData = () => {
 }
 
 const initialState = {
-  data: []
+  data: [],
+  isOpen: false
 }
 
 export default function loadReducer (state = initialState, action) {
-  switch (action.type) {
+  const { type, data, isOpen } = action
+  switch (type) {
     case LOAD_DATA: {
-      return {
-        data: state.data.concat(action.data)
-      }
+      const newData = state.data.concat(data)
+      return Object.assign({}, state, { data: newData })
+    }
+    case OPEN_MODAL: {
+      return Object.assign({}, state, { isOpen })
     }
     default:
       return state

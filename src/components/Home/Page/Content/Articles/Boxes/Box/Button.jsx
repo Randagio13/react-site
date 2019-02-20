@@ -14,5 +14,6 @@ const Button = styled.button`
   text-transform: uppercase;
   position: relative;
   top: -35px;
+  cursor: pointer;
 `
 export default Button

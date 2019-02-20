@@ -1,8 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Open modal 1`] = `
+exports[`Lists tests Snapshot 1`] = `
 <div
-  className="sc-bZQynM cDchzc"
+  className="sc-EHOje bvpTXn"
+  style={
+    Object {
+      "height": false,
+      "position": false,
+      "transform": "",
+      "width": false,
+      "zIndex": false,
+    }
+  }
 >
   <span
     className="sc-bdVaJa hUrPbB"
@@ -23,15 +32,40 @@ exports[`Open modal 1`] = `
   >
     Test sub
   </h3>
-  <button
-    className="sc-ifAKCX glzoNA"
+</div>
+`;
+
+exports[`Snapshot 1`] = `
+<div
+  className="sc-EHOje bvpTXn"
+  style={
+    Object {
+      "height": false,
+      "position": false,
+      "transform": "",
+      "width": false,
+      "zIndex": false,
+    }
+  }
+>
+  <span
+    className="sc-bdVaJa hUrPbB"
   >
-    clicca qui
-  </button>
-  <div
-    className="sc-EHOje jEOkGS"
+    01
+  </span>
+  <img
+    className="sc-bwzfXH kbkKXG"
+    src={null}
+  />
+  <h1
+    className="sc-htpNat fkEake"
   >
-    ciao
-  </div>
+    Test title
+  </h1>
+  <h3
+    className="sc-bxivhb xNlgE"
+  >
+    Test sub
+  </h3>
 </div>
 `;

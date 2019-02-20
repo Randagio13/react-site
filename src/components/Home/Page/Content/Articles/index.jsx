@@ -6,7 +6,7 @@ import Description from './Content/Description'
 import Line from './Content/Line'
 import Footer from './Footer'
 import Gallery from './Gallery'
-import Boxes from './Boxes'
+import Boxes from '../../../../../containers/BoxesContainer'
 
 const ContentArticle = styled.div`
   max-width: 567px

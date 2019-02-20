@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Box from './Box'
+import Box from '../../../../../../containers/BoxContainer'
 
 const BoxesContainer = styled.div.attrs(({ left, top, position, translate }) => ({
   style: {
@@ -15,6 +15,7 @@ const BoxesContainer = styled.div.attrs(({ left, top, position, translate }) => 
 }))`
   width: 310px;
   text-align: center;
+  z-index: 1;
 `
 
 class Boxes extends Component {
@@ -31,6 +32,8 @@ class Boxes extends Component {
   }
   windowScroll () {
     window.addEventListener('scroll', () => {
+      const { isOpen } = this.props
+      if (isOpen) return null
       const y = window.scrollY
       const pos = (y * 0.315)
       const limit = 525
@@ -64,6 +67,7 @@ class Boxes extends Component {
           title={heading}
           subTitle={subheading}
           icon={icons[0]}
+          showButton={i === 0}
         />
       )
     })
