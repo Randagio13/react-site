@@ -8,6 +8,10 @@ import Footer from './Footer'
 import Gallery from './Gallery'
 import Boxes from './Boxes'
 
+const ContentArticle = styled.div`
+  max-width: 567px
+`
+
 class Articles extends Component {
   render () {
     const { className, data } = this.props
@@ -25,20 +29,23 @@ class Articles extends Component {
     return data.map((s, i) => {
       const { id, heading, subheading, description, images } = s
       return i !== 0 ? null : (
-        <React.Fragment key={id}>
+        <ContentArticle key={id}>
           <Heading>{heading}</Heading>
           <SubHeading>{subheading ? subheading.substring(0, 100) : ''}</SubHeading>
           <Description>{description}</Description>
           <Line />
           <Footer />
           <Gallery images={images} />
-        </React.Fragment>
+        </ContentArticle>
       )
     })
   }
 }
 
 export default styled(Articles)`
-  max-width: 567px;
-  padding: 40px 0 0 100px;
+  width: 80vw;
+  padding: 40px 0 0 60px;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0 auto;
 `

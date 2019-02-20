@@ -8,6 +8,7 @@ const Hero = styled.div`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  margin: 60px 0;
 `
 
 Hero.propTypes = {

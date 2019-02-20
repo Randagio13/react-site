@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Open modal 1`] = `
+<div
+  className="sc-bZQynM cDchzc"
+>
+  <span
+    className="sc-bdVaJa hUrPbB"
+  >
+    01
+  </span>
+  <img
+    className="sc-bwzfXH kbkKXG"
+    src={null}
+  />
+  <h1
+    className="sc-htpNat fkEake"
+  >
+    Test title
+  </h1>
+  <h3
+    className="sc-bxivhb xNlgE"
+  >
+    Test sub
+  </h3>
+  <button
+    className="sc-ifAKCX glzoNA"
+  >
+    clicca qui
+  </button>
+  <div
+    className="sc-EHOje jEOkGS"
+  >
+    ciao
+  </div>
+</div>
+`;

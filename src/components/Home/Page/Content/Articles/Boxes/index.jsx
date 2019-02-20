@@ -3,15 +3,18 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Box from './Box'
 
-const BoxesContainer = styled.div`
-  transform: translateY(${props => props.translate ? `${props.translate}px` : '0'});
+const BoxesContainer = styled.div.attrs(({ left, top, position, translate }) => ({
+  style: {
+    left,
+    top,
+    position,
+    marginTop: position === 'fixed' ? 0 : '-150px',
+    paddingLeft: position === 'fixed' ? 0 : '85px',
+    transform: `translateY(${translate})`
+  }
+}))`
   width: 310px;
-  top: ${props => props.top !== 0 ? `${props.top}px` : '442px'};
-  position: fixed;
-  left: calc(100vw - 36vw);
   text-align: center;
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
 `
 
 class Boxes extends Component {
@@ -20,37 +23,39 @@ class Boxes extends Component {
     this.boxRef = React.createRef()
     this.state = {
       translate: 0,
-      top: 0
+      top: 40,
+      left: 0
     }
-  }
-
-  componentDidMount () {
+    this.windowScroll = this.windowScroll.bind(this)
     this.windowScroll()
   }
-
   windowScroll () {
     window.addEventListener('scroll', () => {
-      // console.log('Ref ==> ', this.boxRef)
       const y = window.scrollY
-      const pos = -(y - y / 2)
-      // const add = Math.round(y - top)
-      // const rem = Math.round(top - y)
-      console.log(pos, y)
-      if (y <= 550) {
-        this.setState({
-          translate: pos
-        })
-      } else {
-        this.setState({
-          top: 20
-        })
+      const pos = (y * 0.315)
+      const limit = 525
+      switch (true) {
+        case y < limit:
+          this.setState({
+            translate: `${pos}px`,
+            position: 'initial'
+          })
+          break
+        case y >= limit:
+          this.setState({
+            translate: 0,
+            position: `fixed`,
+            left: `64.7%`
+          })
+          break
+        default:
+          break
       }
     })
   }
   getBox () {
     const { boxes } = this.props
     return boxes.map((b, i) => {
-      console.log(i)
       const { id, heading, subheading, icons } = b
       return (
         <Box
@@ -64,10 +69,15 @@ class Boxes extends Component {
     })
   }
   render () {
-    const { translate, top } = this.state
-    console.log(`Render ==> ${translate}`)
+    const { translate, top, position, left } = this.state
     return (
-      <BoxesContainer ref={this.boxRef} translate={translate} top={top}>
+      <BoxesContainer
+        ref={this.boxRef}
+        position={position}
+        translate={translate}
+        top={top}
+        left={left}
+      >
         {this.getBox()}
       </BoxesContainer>
     )
