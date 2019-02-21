@@ -6,10 +6,11 @@ const SubHeadline = styled.h3`
   color: #000000;
   letter-spacing: 0;
   line-height: 32px;
-  position: relative;
-  top: -30px;
-  width: 80%;
-  padding-left: 22px;
   text-align: left;
+  width: 80%;
+  align-self: center;
+  margin: 0;
+  padding: 15px 0 0 0;
+  z-index: 1;
 `
 export default SubHeadline

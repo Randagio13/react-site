@@ -48,7 +48,7 @@ class Boxes extends Component {
           this.setState({
             translate: 0,
             position: `fixed`,
-            left: `64.7%`
+            left: `63.55%`
           })
           break
         default:
@@ -59,7 +59,8 @@ class Boxes extends Component {
   getBox () {
     const { boxes } = this.props
     return boxes.map((b, i) => {
-      const { id, heading, subheading, icons } = b
+      const { id, heading, subheading, icons, images } = b
+      console.log(b)
       return (
         <Box
           key={id}
@@ -68,6 +69,7 @@ class Boxes extends Component {
           subTitle={subheading}
           icon={icons[0]}
           showButton={i === 0}
+          images={images}
         />
       )
     })
