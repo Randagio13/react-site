@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Lists tests Snapshot 1`] = `
+exports[`Box tests Snapshot 1`] = `
 <div
-  className="sc-EHOje bvpTXn"
+  className="sc-dnqmqq dqQiYf"
   style={
     Object {
       "height": false,
@@ -14,56 +14,19 @@ exports[`Lists tests Snapshot 1`] = `
   }
 >
   <span
-    className="sc-bdVaJa hUrPbB"
-  >
-    01
-  </span>
+    className="sc-bdVaJa QXyNA"
+  />
   <img
-    className="sc-bwzfXH kbkKXG"
+    className="sc-bwzfXH gnkQvR"
     src={null}
   />
   <h1
-    className="sc-htpNat fkEake"
+    className="sc-htpNat fulttM"
   >
     Test title
   </h1>
   <h3
-    className="sc-bxivhb xNlgE"
-  >
-    Test sub
-  </h3>
-</div>
-`;
-
-exports[`Snapshot 1`] = `
-<div
-  className="sc-EHOje bvpTXn"
-  style={
-    Object {
-      "height": false,
-      "position": false,
-      "transform": "",
-      "width": false,
-      "zIndex": false,
-    }
-  }
->
-  <span
-    className="sc-bdVaJa hUrPbB"
-  >
-    01
-  </span>
-  <img
-    className="sc-bwzfXH kbkKXG"
-    src={null}
-  />
-  <h1
-    className="sc-htpNat fkEake"
-  >
-    Test title
-  </h1>
-  <h3
-    className="sc-bxivhb xNlgE"
+    className="sc-bxivhb efitiw"
   >
     Test sub
   </h3>

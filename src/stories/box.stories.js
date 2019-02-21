@@ -2,11 +2,13 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withKnobs, text, select, boolean, object } from '@storybook/addon-knobs'
 import { withInfo } from '@storybook/addon-info'
+import { withNotes } from '@storybook/addon-notes'
 import Box from '../components/Home/Page/Content/Articles/Boxes/Box'
 
 storiesOf('Box', module)
   .addDecorator(withKnobs)
   .addDecorator(withInfo)
+  .addDecorator(withNotes)
   .add('Default', () => (
     <Box
       icon={text('icon', 'piggy')}
